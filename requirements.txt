@@ -1,0 +1,5 @@
+pandas>=2.0.0
+pyarrow>=12.0.0     # for Parquet read/write
+numpy>=1.24.0
+scikit-learn>=1.3.0 # for future ML models
+dataclasses-json>=0.6.0  # optional: if you want JSON <-> dataclass helpers

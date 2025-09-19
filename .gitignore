@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Data
+data/sessions/*.json
+!data/sessions/example.json   # keep one sample if you want
+
+# Models
+models/
