@@ -50,12 +50,8 @@ def load_roast_data():
         return pd.DataFrame()
 
     df = pd.read_json(roast_file, lines=True)
+    return df
 
-    # Convert Series -> list of dicts for type safety
-    session_df = pd.json_normalize(df["session_data"].tolist())
-    features_df = pd.json_normalize(df["features"].tolist())
-
-    return pd.concat([session_df, features_df], axis=1)
 
 
 def preprocess(df):
@@ -91,6 +87,23 @@ def train_models(df):
     mask = ~np.all(np.isnan(Y), axis=1)
     X, Y = X[mask], Y[mask]
 
+    # --- Apply coverage threshold for targets ---
+    min_fraction = 0.33  # require at least 33% non-NaN
+    n_rows = Y.shape[0]
+    valid_targets = []
+    for j, col in enumerate(TARGET_COLUMNS):
+        non_nan_count = np.count_nonzero(~np.isnan(Y[:, j]))
+        if n_rows > 0 and (non_nan_count / n_rows) >= min_fraction:
+            valid_targets.append(True)
+        else:
+            valid_targets.append(False)
+
+    valid_targets = np.array(valid_targets)
+    Y = Y[:, valid_targets]
+    target_cols = [col for col, keep in zip(TARGET_COLUMNS, valid_targets) if keep]
+
+    print(f"🎯 Training on {len(target_cols)} targets with ≥{int(min_fraction*100)}% coverage")
+
     # --- Impute missing targets with column means ---
     col_means = np.nanmean(Y, axis=0)
     inds = np.where(np.isnan(Y))
@@ -115,7 +128,7 @@ def train_models(df):
     errors = np.abs(Y_test - preds)
     per_target_mae = errors.mean(axis=0)
     print("📉 Per-target MAE:")
-    for col, err in zip(TARGET_COLUMNS, per_target_mae):
+    for col, err in zip(target_cols, per_target_mae):
         print(f"  {col:<25} {err:.2f}")
 
     # --- Save trained model ---

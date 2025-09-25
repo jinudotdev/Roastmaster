@@ -71,9 +71,13 @@ def capture_roast_session(session_data, recapture_callback=None):
         confirm = input("Save this session? (y/n): ").strip().lower()
         if confirm == "y":
             OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-            record = {"session_data": session_data, "features": features}
+
+            # flatten: merge session_data + features 
+            record = {**session_data, **features}
+
             with OUT_FILE.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(record, default=serialize) + "\n")
+
             print(f"💾 Session appended to {OUT_FILE}")
             return
         else:

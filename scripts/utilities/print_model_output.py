@@ -16,7 +16,7 @@ def print_roast_report(session_data, confidence, ml_filled_fields):
 
     # --- Metadata ---
     for key, label in [
-        ("supplier_name", "Supplier Name"),
+        ("supplier", "Supplier Name"),
         ("origin_country", "Origin"),
         ("altitude_meters", "Altitude"),
         ("variety", "Variety"),

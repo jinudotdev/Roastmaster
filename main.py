@@ -1,7 +1,7 @@
 from scripts.run_input_menu_session import run_input_menu_session
 from scripts.utilities.capture_roast_session import capture_roast_session
 from scripts.run_model_session import run_model_session
-from scripts.ml_builder import main as train_models
+from models.ml_builder import main as train_models
 from scripts.utilities.plotly_launcher import launch_plotly
 from colorama import init
 init(autoreset=True)
