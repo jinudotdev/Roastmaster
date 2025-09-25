@@ -13,7 +13,7 @@ from sklearn.metrics import mean_absolute_error
 
 # Centralized paths
 from scripts.utilities.paths import DATA_DIR, TRAINED_MODELS_DIR
-
+from models.ml_config import ML_CONFIG
 
 FEATURE_ORDER = (
     [
@@ -76,33 +76,31 @@ def train_models(df):
     df[FEATURE_ORDER] = df[FEATURE_ORDER].apply(pd.to_numeric, errors="coerce")
     df[TARGET_COLUMNS] = df[TARGET_COLUMNS].apply(pd.to_numeric, errors="coerce")
 
-    # --- Features and targets ---
-    X = df[FEATURE_ORDER].values
-    Y = df[TARGET_COLUMNS].values
+    # --- Apply coverage threshold for features ---
+    feature_threshold = ML_CONFIG["feature_coverage_threshold"]
+    feature_coverage = df[FEATURE_ORDER].notna().mean()
+    valid_features = feature_coverage[feature_coverage >= feature_threshold].index.tolist()
+    X = df[valid_features].values
 
-    print(f"📊 Features table: {X.shape[0]} roasts × {X.shape[1]} features")
-    print(f"🎯 Targets table: {Y.shape[0]} roasts × {Y.shape[1]} targets")
-
-    # --- Drop rows with no targets at all ---
-    mask = ~np.all(np.isnan(Y), axis=1)
-    X, Y = X[mask], Y[mask]
+    # --- Impute missing features with column means ---
+    col_means_X = np.nanmean(X, axis=0)
+    inds_X = np.where(np.isnan(X))
+    X[inds_X] = np.take(col_means_X, inds_X[1])
 
     # --- Apply coverage threshold for targets ---
-    min_fraction = 0.33  # require at least 33% non-NaN
-    n_rows = Y.shape[0]
+    target_threshold = ML_CONFIG["target_coverage_threshold"]
+    n_rows = df.shape[0]
     valid_targets = []
     for j, col in enumerate(TARGET_COLUMNS):
-        non_nan_count = np.count_nonzero(~np.isnan(Y[:, j]))
-        if n_rows > 0 and (non_nan_count / n_rows) >= min_fraction:
+        non_nan_count = df[col].notna().sum()
+        if n_rows > 0 and (non_nan_count / n_rows) >= target_threshold:
             valid_targets.append(True)
         else:
             valid_targets.append(False)
 
     valid_targets = np.array(valid_targets)
-    Y = Y[:, valid_targets]
+    Y = df[TARGET_COLUMNS].values[:, valid_targets]
     target_cols = [col for col, keep in zip(TARGET_COLUMNS, valid_targets) if keep]
-
-    print(f"🎯 Training on {len(target_cols)} targets with ≥{int(min_fraction*100)}% coverage")
 
     # --- Impute missing targets with column means ---
     col_means = np.nanmean(Y, axis=0)
