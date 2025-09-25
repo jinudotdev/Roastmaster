@@ -1,5 +1,3 @@
-from typing import Optional, Set, Dict, Any
-
 from scripts.utilities.capture import seconds_to_mmss
 
 def fmt_value(value, key=None, ml_filled_fields=None):

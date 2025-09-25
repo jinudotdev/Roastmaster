@@ -3,7 +3,6 @@ Jarvis Trainer — trains a multi-output ML model from roast logs in data/sessio
 and saves it into models/ for use by ml.py at prediction time.
 """
 
-import json
 import joblib
 import numpy as np
 import pandas as pd

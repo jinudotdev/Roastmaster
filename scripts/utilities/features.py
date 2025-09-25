@@ -1,5 +1,3 @@
-import numpy as np
-from datetime import datetime
 
 def time_to_sec(t):
     return int(t.split(":")[0]) * 60 + int(t.split(":")[1])
