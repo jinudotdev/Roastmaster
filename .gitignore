@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# Local helper scripts
+rebuild.ps1
+
+# Jupyter / notebooks (if you experiment later)
+.ipynb_checkpoints/
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
