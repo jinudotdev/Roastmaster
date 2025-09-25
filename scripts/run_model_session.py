@@ -20,7 +20,7 @@ def run_model_session() -> None:
         "1": "Natural", "2": "Washed", "3": "Honey", "4": "Wet-Hulled", "5": "Other"
     })
     purchase_date = get_validated_date("Purchase Date [Optional]: ", allow_blank=True)
-    roast_date = get_validated_date("Roast Date [Optional]: ", allow_blank=True) or datetime.today()
+    roast_date = get_validated_date("Roast Date [Blank = Today]: ", allow_blank=True) or datetime.today()
 
     room_temp = get_optional_validated_input("Room Temp (°F) [Optional]: ", float)
     humidity = get_optional_validated_input("Humidity (%) [Optional]: ", float)

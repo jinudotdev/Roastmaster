@@ -4,6 +4,8 @@ from scripts.run_model_session import run_model_session
 from scripts.ml_builder import main as train_models
 from scripts.utilities.visidata_launcher import launch_visidata
 from scripts.utilities.plotly_launcher import launch_plotly
+from colorama import init
+init(autoreset=True)
 
 
 
