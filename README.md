@@ -1,6 +1,15 @@
 ## What RoastMaster Does
 RoastMaster is a coffee roasting tool built for an industrial Probat/Burns 540 lb roaster that works in a specific way.
 
+<br>
+
+<div style="text-align: center;">
+  <img src="/assets/images/2025-12-23 Roastmaster GUI.png" alt="Roastmaster" width="400">
+  <p><em>This is the RoastMaster GUI</em></p>
+</div>
+
+<br>
+
 ## Why This Roaster Is Different
 Unlike many roasters where the operator controls gas throughout the roast or automatically follows a continuous curve, this machine follows nine fixed stages. At each stage, you enter a target bean temperature and a fuel percentage, but you don’t control how long the roaster takes to get there. Time is affected by room temperature, humidity, bean condition, and other variables that change day to day.
 
