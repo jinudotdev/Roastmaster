@@ -1,5 +1,23 @@
-﻿venv/
-catboost_info/
+﻿# Ignore Python virtual environments
+venv/
+.env/
+
+# Ignore trained models
+models/
+
+# Ignore Python cache
 __pycache__/
 *.pyc
-.env
+*.pyo
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
