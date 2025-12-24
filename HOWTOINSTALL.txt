@@ -1,0 +1,104 @@
+===============================
+ RoasterMaster – HOW TO INSTALL
+===============================
+
+This guide explains how to install RoastMaster on a new Windows computer.
+
+--------------------------------------
+1. COPY THESE FILES / FOLDERS OVER
+--------------------------------------
+
+Move the following items to the new machine (keep the folder structure):
+    
+    data/
+    gui/
+    scripts_main/
+    scripts_utility/
+    gui.py
+    HOWTOINSTALL.txt
+    main.py
+    README.txt
+    requirements.txt
+
+
+That’s everything RoastMaster needs.  
+DO NOT copy the "venv/" folder — you will create a fresh one.
+
+--------------------------------------
+2. INSTALL PYTHON (IF NEEDED)
+--------------------------------------
+
+Install Python 3.10 or 3.11 from:
+    https://www.python.org/downloads/
+
+Make sure “Add to PATH” is checked during install.
+
+--------------------------------------
+3. CREATE A NEW VIRTUAL ENVIRONMENT
+--------------------------------------
+
+Open PowerShell inside the RoastMaster folder:
+
+    python -m venv venv
+
+Then activate it:
+
+    .\venv\Scripts\Activate.ps1
+
+If PowerShell blocks scripts, run:
+
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    .\venv\Scripts\Activate.ps1
+
+--------------------------------------
+4. INSTALL DEPENDENCIES
+--------------------------------------
+
+Inside the activated venv:
+
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+
+This installs:
+- pandas
+- numpy
+- scikit-learn
+- catboost
+- matplotlib
+- PySide6
+- colorama
+
+--------------------------------------
+5. RUN ROASTMASTER
+--------------------------------------
+
+To run the CLI:
+
+    python main.py
+
+To run the GUI:
+
+    python gui.py
+
+--------------------------------------
+6. OPTIONAL: TRAIN MODELS
+--------------------------------------
+
+Run:
+
+    python main.py
+
+Then choose:
+  4 → Rebuild Scout model
+  6 → Rebuild Core model
+
+The app will generate new model files automatically inside `models/`.
+
+--------------------------------------
+7. THAT’S IT
+--------------------------------------
+
+RoastMaster is now fully installed and ready to use on the new machine.
+If you ever update the project, simply copy updated files and reinstall
+requirements.
+
