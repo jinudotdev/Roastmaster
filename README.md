@@ -23,6 +23,7 @@ See HOWTOINSTALL.txt for setup instructions.
 
 ## Directory Structure
 
+```text
 ├── main.py                         # CLI entrypoint
 ├── gui.py                          # GUI entrypoint (PySide6)
 │
