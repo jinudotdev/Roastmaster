@@ -27,7 +27,7 @@ Core is a larger model that uses more inputs and predicts more values. It will n
 ## Long‑Term Vision
 The long‑term goal for Core is to move away from fixed targets and instead roast toward a desired taste profile, given enough roast and cupping data. Given a target flavor and current conditions (room temperature, humidity, bean age, etc.), Core is meant to return the exact numbers needed at each stage of the roast.
 
-Ideally, hundreds of roast curves, along all sorts of room conditions and bean types, would make for a stellar model. Just like a real coffee roaster learning through experience, RoastMaster is doing the same thing, so think of it as a Trainee, Apprentice, then a Coworker that you can bounce ideas off of (Cupping, however, is still up to you 🙂)
+Ideally, hundreds of roast curves, along all sorts of room conditions and bean types, would make for a stellar model. Just like a real coffee roaster learns through experience, RoastMaster is doing the same, so think of it as a Trainee, Apprentice, then a Coworker that you can bounce ideas off of (Cupping, however, is still up to you 🙂)
 
 ## Installation
 See HOWTOINSTALL.txt for setup instructions.
