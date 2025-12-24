@@ -3,8 +3,8 @@ RoastMaster is a coffee roasting tool built for an industrial Probat/Burns 540 l
 
 <br>
 
-<div style="text-align: center;">
-  <img src="/assets/images/2025-12-23-RoastmasterGUI.png" alt="Roastmaster" width="400">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jinudotdev/jinudotdev.github.io/main/assets/images/2025-12-23-RoastmasterGUI.png" width="400" alt="Roastmaster">
   <p><em>This is the RoastMaster GUI</em></p>
 </div>
 
