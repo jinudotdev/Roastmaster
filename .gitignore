@@ -21,3 +21,6 @@ logs/
 # Ignore OS junk
 .DS_Store
 Thumbs.db
+
+# Ignore CatBoost training logs
+catboost_info/
