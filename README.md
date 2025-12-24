@@ -4,7 +4,7 @@ RoastMaster is a coffee roasting tool built for an industrial Probat/Burns 540 l
 <br>
 
 <div style="text-align: center;">
-  <img src="/assets/images/2025-12-23 Roastmaster GUI.png" alt="Roastmaster" width="400">
+  **<img src="/assets/images/2025-12-23-RoastmasterGUI.png" alt="Roastmaster" width="400">**
   <p><em>This is the RoastMaster GUI</em></p>
 </div>
 
